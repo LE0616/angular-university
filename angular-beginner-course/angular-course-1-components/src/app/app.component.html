@@ -8,7 +8,29 @@
 
 <div class="courses">
 
-    <div class="course-card">
+    <course-card *ngFor="let course of courses; index as i"
+      (courseSelected)="onCourseSelected($event)"
+      [course]="course" [cardIndex]="i+1"></course-card>
+
+  <!-- with Angular ngFor we can minimize repetition by looping through an array of data rather than call one component version at a time ...also available within ngFor are isFirst etc selectors as seen below-->
+
+  <!-- <course-card *ngFor="let course of courses; index as i; first as isFirst; last as isLast; even as isEven; odd as isOdd"
+      [class.is-first]="isFirst"
+      [class.is-last]="isLast"
+      [class.is-even]="isEven"
+      [class.is-odd]="isOdd"
+      (courseSelected)="onCourseSelected($event)"
+      [course]="course" [cardIndex]="i+1"></course-card> -->
+
+  <!-- with Angular we can now replace the div with class course-card with our custom course-card html element which will instead hold our original div -->
+
+    <!-- <course-card (courseSelected)="onCourseSelected($event)" [course]="coreCourse"></course-card>
+
+    <course-card (courseSelected)="onCourseSelected($event)" [course]="rxjsCourse"></course-card>
+
+    <course-card (courseSelected)="onCourseSelected($event)" [course]="ngrxCourse"></course-card> -->
+
+    <!-- <div class="course-card">
 
         <div class="course-title">
             Angular Core Deep Dive
@@ -20,7 +42,7 @@
             A detailed walk-through of the most important part of Angular - the Core and Common modules.
         </div>
 
-    </div>
+    </div> -->
 
 </div>
 
